@@ -10,13 +10,13 @@ public class SpawnManager : MonoBehaviour
     private readonly int[] fixedPos = { -3, 0, 3 };
 
     // Time before spawning starts and time between each spawn
-    private float startDelay = 1f;
+    private float startDelay = 0.5f;
     private float spawnInterval = 0.4f;
 
     // Set the Y and Z positions where objects will spawn
     private float spawnPosYofCollectibles = 1f;
     private float spawnPosYofObstacles = 0f;
-    private float spawnPosZ = -60f;
+    private float spawnPosZ = 10;
 
     // Reference to the collisionChecker script
     private collisionChecker collisionChecker;

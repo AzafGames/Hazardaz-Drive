@@ -6,7 +6,7 @@ public class SpawnObjectMovement : MonoBehaviour
     private float speed = 20f;
 
     // Set the Z position where the object will be destroyed
-    private float maxRangeZ = -100f;
+    private float maxRangeZ = -26f;
 
     // Reference to the collisionChecker script
     private collisionChecker collisionChecker;

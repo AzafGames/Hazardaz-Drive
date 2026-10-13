@@ -35,7 +35,7 @@ public class collisionChecker : MonoBehaviour
 
 
     // Runs automatically whenever this GameObject collides with another 3D object
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         // Stop if game is over
         if (isGameOver)
