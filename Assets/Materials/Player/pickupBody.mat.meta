@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e5c7b9335481d434d9d25b627714f56d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273052
+  packageName: Stylized Pickup - 3d model
+  packageVersion: 1.0
+  assetPath: Assets/Pack_Pickup/Materials/pickupBody.mat
+  uploadId: 657945
