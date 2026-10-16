@@ -1,91 +1,62 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
-    // Movement speed of the player
+    // Movement settings
     private float speed = 15f;
-
-    // Input Action for keyboard/controller controls
-    public InputAction moveKey;
-
-    // Stores keyboard/controller input
-    private Vector2 moveAction;
-
-    // Stores UI button movement input
-    // -1 = Left, 0 = Stop, +1 = Right
-    private float uiMoveInput;
-
-    // Left and right movement limit
     private float xRange = 6.7f;
+
+    // Input system
+    private InputSystem_Actions controls;
+    private Vector2 moveInput;
+
+    // Rigidbody for player movement
+    private Rigidbody playerRb;
+
+    private void Awake()
+    {
+        // Get Rigidbody and create controls
+        playerRb = GetComponent<Rigidbody>();
+        controls = new InputSystem_Actions();
+    }
 
     private void OnEnable()
     {
-        // Enable input action
-        moveKey.Enable();
+        // Enable player controls
+        controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        // Disable input action
-        moveKey.Disable();
+        // Disable player controls
+        controls.Player.Disable();
     }
 
     private void Update()
     {
-        // Read keyboard/controller input
-        moveAction = moveKey.ReadValue<Vector2>();
+        // Read movement input
+        moveInput = controls.Player.Move.ReadValue<Vector2>();
+    }
 
-        // Stop movement if the game has not started
-        // or the game is over
-        if (!GameManager.isStartButtonClicked ||
-            collisionChecker.isGameOver)
+    private void FixedUpdate()
+    {
+        // Stop movement if the game has not started or is over
+        if (!GameManager.isStartButtonClicked || collisionChecker.isGameOver)
         {
             return;
         }
 
-        // Combine keyboard input with UI button input
-        float horizontalInput = moveAction.x + uiMoveInput;
-
-        // Keep input between -1 and 1
-        horizontalInput = Mathf.Clamp(
-            horizontalInput, -1f, 1f
-        );
+        // Get the current player position
+        Vector3 newPosition = playerRb.position;
 
         // Move the player horizontally
-        float movement = horizontalInput * speed * Time.deltaTime;
+        newPosition.x += moveInput.x * speed * Time.fixedDeltaTime;
 
-        transform.Translate(
-            Vector3.right * movement,
-            Space.World
-        );
+        // Keep the player within the movement range
+        newPosition.x = Mathf.Clamp(newPosition.x, -xRange, xRange);
 
-        // Keep the player within X-axis boundaries
-        Vector3 position = transform.position;
-
-        position.x = Mathf.Clamp(
-            position.x, -xRange, xRange
-        );
-
-        transform.position = position;
-    }
-
-    // Called by GameManager when Left button is pressed
-    public void MoveLeft()
-    {
-        uiMoveInput = -1f;
-    }
-
-    // Called by GameManager when Right button is pressed
-    public void MoveRight()
-    {
-        uiMoveInput = 1f;
-    }
-
-    // Called when Left/Right button movement stops
-    public void StopMoving()
-    {
-        uiMoveInput = 0f;
+        // Apply the new position
+        playerRb.MovePosition(newPosition);
     }
 }

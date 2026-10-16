@@ -47,7 +47,8 @@ public class SpawnManager : MonoBehaviour
         // Choose a random lane
         int randomPosIndex = Random.Range(0, fixedPos.Length);
 
-        if (spawnObjects[objectIndex].CompareTag("Collectible") || spawnObjects[objectIndex].CompareTag("Health"))
+        if (spawnObjects[objectIndex].CompareTag("Collectible") 
+            || spawnObjects[objectIndex].CompareTag("Health"))
         {
             // Set the position where the object will spawn
             Vector3 spawnPosition = new Vector3(

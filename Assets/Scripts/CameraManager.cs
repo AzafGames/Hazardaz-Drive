@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    // Reference to the player
     [SerializeField] private Transform player;
 
+    // Distance between the player and camera
     [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 3f, -6f);
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = player.position + cameraOffset;
+        // Calculate the camera position
+        Vector3 targetPosition = player.position + cameraOffset;
+
+        // Follow the player
+        transform.position = targetPosition;
     }
 }

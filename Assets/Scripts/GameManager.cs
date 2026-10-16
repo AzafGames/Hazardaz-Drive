@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     // Reference to the health text
     [SerializeField] private TextMeshProUGUI healthText;
 
-    [SerializeField] private Image gameOverImage;
+    [SerializeField] private TextMeshProUGUI gameOverText;
 
     // References to the game buttons
     [SerializeField] private Button startButton;
@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
-    [SerializeField] private Button leftButton;
-    [SerializeField] private Button rightButton;
 
     // Reference to the PlayerMovement script
     [SerializeField] private playerController player;
@@ -47,12 +45,10 @@ public class GameManager : MonoBehaviour
 
         // Hide the other UI elements
         healthText.gameObject.SetActive(false);
-        gameOverImage.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
-        leftButton.gameObject.SetActive(false);
-        rightButton.gameObject.SetActive(false);
 
         // Display the initial score and health
         UpdateScoreUI();
@@ -69,7 +65,7 @@ public class GameManager : MonoBehaviour
         if (collisionChecker.isGameOver)
         {
             // Show the game over message and restart button
-            gameOverImage.gameObject.SetActive(true);
+            gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
 
             // Hide the pause and resume buttons
@@ -79,9 +75,6 @@ public class GameManager : MonoBehaviour
             // Show the exit button
             exitButton.gameObject.SetActive(true);
 
-            // Hide the movement buttons
-            leftButton.gameObject.SetActive(false);
-            rightButton.gameObject.SetActive(false);
         }
     }
 
@@ -114,27 +107,6 @@ public class GameManager : MonoBehaviour
         exitButton.gameObject.SetActive(false);
         healthText.gameObject.SetActive(true);
 
-        // Show the movement buttons
-        leftButton.gameObject.SetActive(true);
-        rightButton.gameObject.SetActive(true);
-    }
-
-    public void LeftButton()
-    {
-        // Tell the player to move left
-        player.MoveLeft();
-    }
-
-    public void RightButton()
-    {
-        // Tell the player to move right
-        player.MoveRight();
-    }
-
-    public void StopButton()
-    {
-        // Tell the player to stop moving
-        player.StopMoving();
     }
 
     public void PauseGame()
@@ -151,8 +123,6 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
 
-        // Stop the player's movement
-        player.StopMoving();
     }
 
     public void ResumeGame()
