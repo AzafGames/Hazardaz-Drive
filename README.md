@@ -366,23 +366,23 @@ The project will be tested and optimized for each supported platform to provide 
 
 ### 🚗 Core Gameplay
 
-* [ ] Unity project setup
-* [ ] Basic game scene
-* [ ] Player car
-* [ ] Basic car movement
-* [ ] Road environment
-* [ ] Continuous road movement
-* [ ] Environment movement
-* [ ] Obstacle system
-* [ ] Collectible system
-* [ ] Score system
-* [ ] Health system
-* [ ] Collision system
-* [ ] Game-over system
-* [ ] Gameplay UI
-* [ ] Restart system
-* [ ] Audio
-* [ ] Visual effects
+* [x] Unity project setup
+* [x] Basic game scene
+* [x] Player car
+* [x] Basic car movement
+* [x] Road environment
+* [x] Continuous road movement
+* [x] Environment movement
+* [x] Obstacle system
+* [x] Collectible system
+* [x] Score system
+* [x] Health system
+* [x] Collision system
+* [x] Game-over system
+* [x] Gameplay UI
+* [x] Restart system
+* [x] Audio
+* [x] Visual effects
 * [ ] Difficulty progression
 
 ---
@@ -391,34 +391,34 @@ The project will be tested and optimized for each supported platform to provide 
 
 ## Phase 1 — Project Setup
 
-* [ ] Create Unity project
-* [ ] Configure project settings
-* [ ] Create GitHub repository
-* [ ] Configure `.gitignore`
-* [ ] Create folder structure
-* [ ] Create initial scene
+* [x] Create Unity project
+* [x] Configure project settings
+* [x] Create GitHub repository
+* [x] Configure `.gitignore`
+* [x] Create folder structure
+* [x] Create initial scene
 
 ---
 
 ## Phase 2 — Player System
 
-* [ ] Import/create car model
-* [ ] Create player GameObject
-* [ ] Configure Rigidbody
-* [ ] Create car controller
-* [ ] Implement left/right movement
-* [ ] Configure collision detection
-* [ ] Test player controls
+* [x] Import/create car model
+* [x] Create player GameObject
+* [x] Configure Rigidbody
+* [x] Create car controller
+* [x] Implement left/right movement
+* [x] Configure collision detection
+* [x] Test player controls
 
 ---
 
 ## Phase 3 — Road System
 
-* [ ] Create road
-* [ ] Create reusable road segments
-* [ ] Implement road movement
-* [ ] Implement road recycling
-* [ ] Test infinite-road illusion
+* [x] Create road
+* [x] Create reusable road segments
+* [x] Implement road movement
+* [x] Implement road recycling
+* [x] Test infinite-road illusion
 * [ ] Optimize road generation
 
 ---
@@ -436,46 +436,46 @@ The project will be tested and optimized for each supported platform to provide 
 
 ## Phase 5 — Obstacles
 
-* [ ] Create obstacle prefabs
-* [ ] Create obstacle spawning system
-* [ ] Randomize obstacle positions
-* [ ] Implement collision detection
-* [ ] Implement obstacle recycling
+* [x] Create obstacle prefabs
+* [x] Create obstacle spawning system
+* [x] Randomize obstacle positions
+* [x] Implement collision detection
+* [x] Implement obstacle recycling
 * [ ] Add difficulty progression
 
 ---
 
 ## Phase 6 — Collectibles & Score
 
-* [ ] Create collectible prefab
-* [ ] Implement collectible spawning
-* [ ] Detect collection
-* [ ] Create score manager
-* [ ] Update score UI
-* [ ] Add collectible effects
-* [ ] Add collectible sound
+* [x] Create collectible prefab
+* [x] Implement collectible spawning
+* [x] Detect collection
+* [x] Create score manager
+* [x] Update score UI
+* [x] Add collectible effects
+* [x] Add collectible sound
 
 ---
 
 ## Phase 7 — Health & Damage
 
-* [ ] Create health system
-* [ ] Implement collision damage
-* [ ] Create health UI
+* [x] Create health system
+* [x] Implement collision damage
+* [x] Create health UI
 * [ ] Add damage feedback
-* [ ] Add crash effects
+* [x] Add crash effects
 * [ ] Implement zero-health condition
 
 ---
 
 ## Phase 8 — Game State
 
-* [ ] Create Game Manager
-* [ ] Start game state
-* [ ] Playing state
-* [ ] Pause state
-* [ ] Game-over state
-* [ ] Restart system
+* [x] Create Game Manager
+* [x] Start game state
+* [x] Playing state
+* [x] Pause state
+* [x] Game-over state
+* [x] Restart system
 
 ---
 
@@ -483,11 +483,11 @@ The project will be tested and optimized for each supported platform to provide 
 
 * [ ] Main menu
 * [ ] Gameplay HUD
-* [ ] Score display
-* [ ] Health display
-* [ ] Pause menu
-* [ ] Game-over screen
-* [ ] Restart button
+* [x] Score display
+* [x] Health display
+* [x] Pause menu
+* [x] Game-over screen
+* [x] Restart button
 * [ ] UI animations
 
 ---
@@ -495,11 +495,11 @@ The project will be tested and optimized for each supported platform to provide 
 ## Phase 10 — Audio & Effects
 
 * [ ] Engine sound
-* [ ] Collision sound
-* [ ] Collectible sound
-* [ ] Background music
-* [ ] Crash effects
-* [ ] Particle effects
+* [x] Collision sound
+* [x] Collectible sound
+* [x] Background music
+* [x] Crash effects
+* [x] Particle effects
 * [ ] Camera shake
 * [ ] Visual feedback
 
