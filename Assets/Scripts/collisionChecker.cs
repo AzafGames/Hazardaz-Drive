@@ -2,91 +2,99 @@ using UnityEngine;
 
 public class collisionChecker : MonoBehaviour
 {
-    // Global flag to track if the game is over across all scripts
+    // Tracks if the game is over
     public static bool isGameOver;
 
     private GameManager gameManager;
 
-    // Keeps track of the total collected points (persists across collisions)
+    // Keeps track of the player's score
     public static float score;
 
+    // Keeps track of the car's current health
     public static float Carhealth;
 
-    // Particle effect references assigned via the Inspector
+    // Particle effects for explosions and collecting items
     public ParticleSystem explosionEffect;
     public ParticleSystem coinCollectEffect;
 
-    // Audio components for playing sound effects
+    // Audio components for sound effects
     public AudioSource audioSource;
     public AudioClip coinCollectSound;
     public AudioClip explosionSound;
 
-
     private void Awake()
     {
-        // Reset game state when scene starts/restarts
+        // Reset game stats when the scene starts
         isGameOver = false;
         score = 0;
         Carhealth = 100;
 
-        // Get and store the AudioSource component attached to this GameObject
+        // Get the AudioSource component on this object
         audioSource = GetComponent<AudioSource>();
     }
 
-
-    // Runs automatically whenever this GameObject collides with another 3D object
+    // Runs when the car enters a trigger collider
     private void OnTriggerEnter(Collider other)
     {
-        // Stop if game is over
+        // Do nothing if the game is already over
         if (isGameOver)
         {
             return;
         }
 
-        // Check for collectible
+        // If we hit a collectible (coin)
         if (other.gameObject.CompareTag("Collectible"))
         {
-            // Remove the collectible object from the scene
+            // Remove the coin from the game
             Destroy(other.gameObject);
 
-            // Play the visual collection particle effect
+            // Play collection particle effect
             coinCollectEffect.Play();
 
-            // Play the coin pickup audio clip once at full volume
+            // Play coin sound effect
             audioSource.PlayOneShot(coinCollectSound, 1.0f);
 
-            // Increase point count by 1
+            // Add 1 to the score
             score++;
         }
-
-        // Check for obstacle
+        // If we hit an obstacle
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            // Destroy the obstacle object
+            // Remove the obstacle from the game
             Destroy(other.gameObject);
 
-            // Trigger the explosion visual particle effect
+            // Play explosion particle effect
             explosionEffect.Play();
 
-            // Play the explosion sound effect at full volume
+            // Play explosion sound effect
             audioSource.PlayOneShot(explosionSound, 1.0f);
 
-            
-            Carhealth -= 100;
-        }
+            // Reduce car health by 25
+            Carhealth -= 25;
 
-        if (Carhealth <= 0)
+            // If health drops to 0 or below, end the game
+            if (Carhealth <= 0)
+            {
+                isGameOver = true;
+            }
+        }
+        // If we hit a power-up
+        else if (other.gameObject.CompareTag("Health"))
         {
-            isGameOver = true;
+            // Heal the car if health is below maximum (100)
+            if (Carhealth < 100)
+            {
+                Carhealth += 25;
+            }
 
+            // Remove the power-up from the game
+            Destroy(other.gameObject);
         }
-        
+
+        // Reset health if the game is over and the restart button was clicked
         if (Carhealth <= 0 && GameManager.isRestartButtonClicked)
         {
-
             Carhealth = 100;
         }
-        
-        
     }
 }

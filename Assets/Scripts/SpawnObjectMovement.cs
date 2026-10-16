@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpawnObjectMovement : MonoBehaviour
 {
     // Set how fast the object moves
-    private float speed = 20f;
+    private float speed = 15f;
 
     // Set the Z position where the object will be destroyed
     private float maxRangeZ = -26f;

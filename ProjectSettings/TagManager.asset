@@ -10,6 +10,9 @@ TagManager:
   - Collectible
   - PowerUp
   - Wheel
+  - Score
+  - FxTemporaire
+  - Health
   layers:
   - Default
   - TransparentFX

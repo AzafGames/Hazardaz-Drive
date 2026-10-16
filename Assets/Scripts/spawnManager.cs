@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private List<GameObject> spawnObjects = new List<GameObject>();
 
     // Available X positions for the three lanes
-    private readonly int[] fixedPos = { -3, 0, 3 };
+    private readonly int[] fixedPos = { -5, 0, 5 };
 
     // Time before spawning starts and time between each spawn
     private float startDelay = 0.5f;
@@ -47,7 +47,7 @@ public class SpawnManager : MonoBehaviour
         // Choose a random lane
         int randomPosIndex = Random.Range(0, fixedPos.Length);
 
-        if (spawnObjects[objectIndex].CompareTag("Collectible"))
+        if (spawnObjects[objectIndex].CompareTag("Collectible") || spawnObjects[objectIndex].CompareTag("Health"))
         {
             // Set the position where the object will spawn
             Vector3 spawnPosition = new Vector3(
@@ -62,7 +62,7 @@ public class SpawnManager : MonoBehaviour
                 spawnPosition,
                 spawnObjects[objectIndex].transform.rotation
             );
-        }else if (spawnObjects[objectIndex].CompareTag("Obstacle"))
+        } else if (spawnObjects[objectIndex].CompareTag("Obstacle"))
         {
             // Set the position where the object will spawn
             Vector3 spawnPosition = new Vector3(

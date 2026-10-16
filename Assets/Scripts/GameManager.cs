@@ -8,11 +8,10 @@ public class GameManager : MonoBehaviour
     // Reference to the score text
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    // Reference to the game over text
-    [SerializeField] private TextMeshProUGUI gameOverText;
-
     // Reference to the health text
     [SerializeField] private TextMeshProUGUI healthText;
+
+    [SerializeField] private Image gameOverImage;
 
     // References to the game buttons
     [SerializeField] private Button startButton;
@@ -24,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button rightButton;
 
     // Reference to the PlayerMovement script
-    [SerializeField] private playerMovement player;
+    [SerializeField] private playerController player;
 
     // Store the current game button states
     public static bool isStartButtonClicked;
@@ -47,7 +46,8 @@ public class GameManager : MonoBehaviour
         exitButton.gameObject.SetActive(true);
 
         // Hide the other UI elements
-        gameOverText.gameObject.SetActive(false);
+        healthText.gameObject.SetActive(false);
+        gameOverImage.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         if (collisionChecker.isGameOver)
         {
             // Show the game over message and restart button
-            gameOverText.gameObject.SetActive(true);
+            gameOverImage.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
 
             // Hide the pause and resume buttons
@@ -88,13 +88,13 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         // Display the current score
-        scoreText.text = "Score: " + collisionChecker.score;
+        scoreText.text = collisionChecker.score.ToString();
     }
 
     private void UpdateHealthUI()
     {
         // Display the current car health
-        healthText.text = "Health: " + collisionChecker.Carhealth + "%";
+        healthText.text = collisionChecker.Carhealth + "%";
     }
 
     public void StartGame()
@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
         pauseButton.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        healthText.gameObject.SetActive(true);
 
         // Show the movement buttons
         leftButton.gameObject.SetActive(true);
