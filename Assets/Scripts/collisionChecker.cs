@@ -18,7 +18,7 @@ public class collisionChecker : MonoBehaviour
     public ParticleSystem coinCollectEffect;
 
     // Audio components for sound effects
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip coinCollectSound;
     public AudioClip explosionSound;
 

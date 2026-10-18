@@ -20,9 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
 
-    // Reference to the PlayerMovement script
-    [SerializeField] private playerController player;
-
     // Store the current game button states
     public static bool isStartButtonClicked;
     public static bool isPauseButtonClicked;
