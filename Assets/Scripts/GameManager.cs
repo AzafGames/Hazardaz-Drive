@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public static bool isPauseButtonClicked;
     public static bool isRestartButtonClicked;
 
+    private AudioSource audioSource;
+    
+
     private void Awake()
     {
         // Pause the game when it starts
@@ -50,6 +53,9 @@ public class GameManager : MonoBehaviour
         // Display the initial score and health
         UpdateScoreUI();
         UpdateHealthUI();
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Pause();
     }
 
     private void Update()
@@ -71,6 +77,8 @@ public class GameManager : MonoBehaviour
 
             // Show the exit button
             exitButton.gameObject.SetActive(true);
+
+            audioSource.Pause();
 
         }
     }
@@ -104,6 +112,8 @@ public class GameManager : MonoBehaviour
         exitButton.gameObject.SetActive(false);
         healthText.gameObject.SetActive(true);
 
+        audioSource.Play();
+
     }
 
     public void PauseGame()
@@ -120,6 +130,8 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(true);
 
+        audioSource.Pause();
+
     }
 
     public void ResumeGame()
@@ -134,6 +146,8 @@ public class GameManager : MonoBehaviour
         resumeButton.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(false);
+
+        audioSource.Play();
     }
 
     public void RestartGame()
@@ -146,6 +160,8 @@ public class GameManager : MonoBehaviour
 
         // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        
     }
 
     public void ExitGame()

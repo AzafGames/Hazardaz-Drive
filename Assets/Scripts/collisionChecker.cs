@@ -14,8 +14,8 @@ public class collisionChecker : MonoBehaviour
     public static float Carhealth;
 
     // Particle effects for explosions and collecting items
-    public ParticleSystem explosionEffect;
-    public ParticleSystem coinCollectEffect;
+    //public ParticleSystem explosionEffect;
+    //public ParticleSystem coinCollectEffect;
 
     // Audio components for sound effects
     private AudioSource audioSource;
@@ -49,7 +49,7 @@ public class collisionChecker : MonoBehaviour
             Destroy(other.gameObject);
 
             // Play collection particle effect
-            coinCollectEffect.Play();
+            //coinCollectEffect.Play();
 
             // Play coin sound effect
             audioSource.PlayOneShot(coinCollectSound, 1.0f);
@@ -64,7 +64,7 @@ public class collisionChecker : MonoBehaviour
             Destroy(other.gameObject);
 
             // Play explosion particle effect
-            explosionEffect.Play();
+            //explosionEffect.Play();
 
             // Play explosion sound effect
             audioSource.PlayOneShot(explosionSound, 1.0f);
