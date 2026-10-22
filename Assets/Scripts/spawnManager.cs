@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public class SpawnManager : MonoBehaviour
 {
     // List of objects that can be spawned
-    [SerializeField] private List<GameObject> spawnObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> collectibleObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> obstacleObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> powerUpObjects = new List<GameObject>();
 
     // Available X positions for the three lanes
     private readonly int[] fixedPos = { -5, 0, 5 };
@@ -41,14 +43,12 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        // Choose a random object from the list
-        int objectIndex = Random.Range(0, spawnObjects.Count);
-
         // Choose a random lane
         int randomPosIndex = Random.Range(0, fixedPos.Length);
 
-        if (spawnObjects[objectIndex].CompareTag("Collectible") 
-            || spawnObjects[objectIndex].CompareTag("Health"))
+        int spawnProbabilityRoll = Random.Range(0, 100);
+
+        if (spawnProbabilityRoll < 70)
         {
             // Set the position where the object will spawn
             Vector3 spawnPosition = new Vector3(
@@ -57,13 +57,18 @@ public class SpawnManager : MonoBehaviour
                 spawnPosZ
             );
 
+            // Pick a random collectible object to spawn
+            int collectibleIndex = Random.Range(0, collectibleObjects.Count);
+            GameObject collectiblePrefab = collectibleObjects[collectibleIndex];
+
             // Create the selected object at the spawn position
-            GameObject spawnedObject = Instantiate(
-                spawnObjects[objectIndex],
+            Instantiate(
+                collectiblePrefab,
                 spawnPosition,
-                spawnObjects[objectIndex].transform.rotation
+                collectiblePrefab.transform.rotation
             );
-        } else if (spawnObjects[objectIndex].CompareTag("Obstacle"))
+        }
+        else if (spawnProbabilityRoll < 95)
         {
             // Set the position where the object will spawn
             Vector3 spawnPosition = new Vector3(
@@ -72,11 +77,35 @@ public class SpawnManager : MonoBehaviour
                 spawnPosZ
             );
 
+            // Pick a random obstacle object to spawn
+            int obstacleIndex = Random.Range(0, obstacleObjects.Count);
+            GameObject obstaclePrefab = obstacleObjects[obstacleIndex];
+
             // Create the selected object at the spawn position
-            GameObject spawnedObject = Instantiate(
-                spawnObjects[objectIndex],
+            Instantiate(
+                obstaclePrefab,
                 spawnPosition,
-                spawnObjects[objectIndex].transform.rotation
+                obstaclePrefab.transform.rotation
+            );
+        }
+        else if (spawnProbabilityRoll >= 95)
+        {
+            // Set the position where the object will spawn
+            Vector3 spawnPosition = new Vector3(
+                fixedPos[randomPosIndex],
+                spawnPosYofCollectibles,
+                spawnPosZ
+            );
+
+            // Pick a random power-up object to spawn
+            int powerUpIndex = Random.Range(0, powerUpObjects.Count);
+            GameObject powerUpPrefab = powerUpObjects[powerUpIndex];
+
+            // Create the selected object at the spawn position
+            Instantiate(
+                powerUpPrefab,
+                spawnPosition,
+                powerUpPrefab.transform.rotation
             );
         }
     }

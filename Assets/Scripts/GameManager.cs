@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
-
+    [SerializeField] private Button soundButton;
+    [SerializeField] private Button muteButton;
+ 
     // Store the current game button states
     public static bool isStartButtonClicked;
     public static bool isPauseButtonClicked;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         scoreText.gameObject.SetActive(true);
         startButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+        soundButton.gameObject.SetActive(true);
 
         // Hide the other UI elements
         healthText.gameObject.SetActive(false);
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         pauseButton.gameObject.SetActive(false);
         resumeButton.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
+        muteButton.gameObject.SetActive(false);
 
         // Display the initial score and health
         UpdateScoreUI();
@@ -162,6 +166,20 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         
+    }
+
+    public void SoundButton()
+    {
+        AudioListener.volume = 0f;
+        soundButton.gameObject.SetActive(false);
+        muteButton.gameObject.SetActive(true);
+    }
+
+    public void MuteButton()
+    {
+        AudioListener.volume = 1f;
+        muteButton.gameObject.SetActive(false);
+        soundButton.gameObject.SetActive(true);
     }
 
     public void ExitGame()

@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour
         // Get Rigidbody and create controls
         playerRb = GetComponent<Rigidbody>();
         controls = new InputSystem_Actions();
+
     }
 
     private void OnEnable()
@@ -31,6 +32,7 @@ public class playerController : MonoBehaviour
     {
         // Disable player controls
         controls.Player.Disable();
+
     }
 
     private void Update()
