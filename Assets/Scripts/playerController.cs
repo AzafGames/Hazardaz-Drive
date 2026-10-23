@@ -43,22 +43,16 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Stop movement if the game has not started or is over
-        if (!GameManager.isStartButtonClicked || collisionChecker.isGameOver)
-        {
-            return;
-        }
+        // Normalize the direction vector to prevent diagonal speeding
+        Vector3 moveDirection = new Vector3(moveInput.x, 0f, 0f).normalized;
 
-        // Get the current player position
-        Vector3 newPosition = playerRb.position;
+        // Get the current position and calculate the new target position
+        Vector3 newPosition = playerRb.position + moveDirection * speed * Time.fixedDeltaTime;
 
-        // Move the player horizontally
-        newPosition.x += moveInput.x * speed * Time.fixedDeltaTime;
-
-        // Keep the player within the movement range
+        // Keep the player within the movement range on the X axis
         newPosition.x = Mathf.Clamp(newPosition.x, -xRange, xRange);
 
-        // Apply the new position
+        // Move the Rigidbody safely to the final clamped position
         playerRb.MovePosition(newPosition);
     }
 }
