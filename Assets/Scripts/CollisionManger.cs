@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class collisionChecker : MonoBehaviour
+public class CollisionManager : MonoBehaviour
 {
     // Tracks if the game is over
     public static bool isGameOver;
 
-    private GameManager gameManager;
+    private UIManager uiManager;
 
     // Keeps track of the player's score
     public static float score;
@@ -92,7 +92,7 @@ public class collisionChecker : MonoBehaviour
         }
 
         // Reset health if the game is over and the restart button was clicked
-        if (Carhealth <= 0 && GameManager.isRestartButtonClicked)
+        if (Carhealth <= 0 && UIManager.isRestartButtonClicked)
         {
             Carhealth = 100;
         }

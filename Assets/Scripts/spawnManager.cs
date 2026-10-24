@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnPosZ = 10;
 
     // Reference to the collisionChecker script
-    private collisionChecker collisionChecker;
+    private CollisionManager collisionManager;
 
     private void OnEnable()
     {
@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnRandomObject()
     {
         // Stop spawning if the game is over
-        if (collisionChecker.isGameOver)
+        if (CollisionManager.isGameOver)
         {
             return;
         }

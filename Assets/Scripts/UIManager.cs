@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     // Reference to the score text
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         UpdateHealthUI();
 
         // Check if the game is over
-        if (collisionChecker.isGameOver)
+        if (CollisionManager.isGameOver)
         {
             // Show the game over message and restart button
             gameOverText.gameObject.SetActive(true);
@@ -90,13 +90,13 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         // Display the current score
-        scoreText.text = collisionChecker.score.ToString();
+        scoreText.text = CollisionManager.score.ToString();
     }
 
     private void UpdateHealthUI()
     {
         // Display the current car health
-        healthText.text = collisionChecker.Carhealth + "%";
+        healthText.text = CollisionManager.Carhealth + "%";
     }
 
     public void StartGame()

@@ -15,12 +15,12 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private float maxRangeZ = -45f;
 
     // Reference to check if the game is over
-    private collisionChecker collisionChecker;
+    private CollisionManager collisionManager;
 
     void Update()
     {
         // Stop moving if the game is over
-        if (collisionChecker.isGameOver)
+        if (CollisionManager.isGameOver)
         {
             return;
         }

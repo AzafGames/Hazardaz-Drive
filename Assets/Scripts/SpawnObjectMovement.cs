@@ -9,12 +9,12 @@ public class SpawnObjectMovement : MonoBehaviour
     private float maxRangeZ = -26f;
 
     // Reference to the collisionChecker script
-    private collisionChecker collisionChecker;
+    private CollisionManager collisionManager;
 
     private void FixedUpdate()
     {
         // Stop moving if the game is over
-        if (collisionChecker.isGameOver)
+        if (CollisionManager.isGameOver)
         {
             return;
         }
