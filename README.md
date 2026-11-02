@@ -425,11 +425,11 @@ The project will be tested and optimized for each supported platform to provide 
 
 ## Phase 4 — Environment
 
-* [ ] Add trees
+* [x] Add trees
 * [ ] Add bushes
 * [ ] Add roadside objects
-* [ ] Implement environment movement
-* [ ] Implement environment recycling
+* [x] Implement environment movement
+* [x] Implement environment recycling
 * [ ] Improve scene composition
 
 ---
